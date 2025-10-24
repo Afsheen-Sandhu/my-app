@@ -5,7 +5,7 @@ import {
   increment,
   decrement,
   addAmount,
-} from "@/store/slices/counter/counterSlice";
+} from "@/store/slices/counter/CounterSlice";
 import { useState } from "react";
 
 export function Counter() {

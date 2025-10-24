@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { ThemeToggle } from "@/components/ui/theme/ThemeToggle";
 import Link from "next/link";
 
 export function Header() {

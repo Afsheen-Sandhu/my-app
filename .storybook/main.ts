@@ -12,5 +12,10 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["../public"],
+  refs: {
+    "@storybook/addon-docs": {
+      disable: true,
+    },
+  },
 };
 export default config;
