@@ -1,23 +1,27 @@
-import { API_BASE_URL } from "@/constants";
+import axiosInstance from "@/lib/axios/axios";
 import { ApiResponse, User } from "@/types";
 
 export const userService = {
   async getUser(id: string): Promise<ApiResponse<User>> {
-    const response = await fetch(`${API_BASE_URL}/users/${id}`);
-    return response.json();
+    return axiosInstance.get(`/users/${id}`);
   },
 
   async updateUser(
     id: string,
     data: Partial<User>
   ): Promise<ApiResponse<User>> {
-    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return response.json();
+    return axiosInstance.put(`/users/${id}`, data);
+  },
+
+  async createUser(data: Omit<User, "id">): Promise<ApiResponse<User>> {
+    return axiosInstance.post("/users", data);
+  },
+
+  async deleteUser(id: string): Promise<void> {
+    return axiosInstance.delete(`/users/${id}`);
+  },
+
+  async listUsers(): Promise<ApiResponse<User[]>> {
+    return axiosInstance.get("/users");
   },
 };

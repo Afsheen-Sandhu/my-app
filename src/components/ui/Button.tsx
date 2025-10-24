@@ -16,7 +16,7 @@ export function Button({
   const baseStyles = "rounded-md font-medium transition-colors";
 
   const variants = {
-    primary: "bg-gray-900 text-white hover:bg-gray-800",
+    primary: "bg-yellow-500 text-white hover:bg-yellow-800",
     secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200",
     outline: "border border-gray-300 hover:bg-gray-50",
   };
