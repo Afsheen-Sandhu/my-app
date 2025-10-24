@@ -1,4 +1,4 @@
-import { Counter } from "@/components/layout/home/Counter";
+import { Counter } from "@/components/layout/home/counter";
 
 export default function Home() {
   return (
