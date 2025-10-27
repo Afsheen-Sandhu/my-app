@@ -35,6 +35,9 @@ axiosInstance.interceptors.response.use(
         case 401:
           // Handle unauthorized
           break;
+        case 403:
+          // Handle forbidden
+          break;
         case 404:
           // Handle not found
           break;
