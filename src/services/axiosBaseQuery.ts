@@ -1,38 +1,40 @@
+// src/services/api/CustomBaseQuery.ts
 import axiosInstance from "@/lib/axios/AxiosInstance";
 import { BaseQueryFn } from "@reduxjs/toolkit/query";
 import { AxiosRequestConfig, AxiosError } from "axios";
 
-// ✅ Define a generic type for error responses
-interface AxiosBaseQueryError {
+// ✅ Type for error responses
+export interface AxiosBaseQueryError {
   status?: number;
   data?: unknown;
   message?: string;
 }
 
-// ✅ Updated version that accepts baseUrl argument
+// ✅ Arguments for each query/mutation
+export interface AxiosBaseQueryArgs {
+  url: string;
+  method: AxiosRequestConfig["method"];
+  data?: AxiosRequestConfig["data"];
+  params?: AxiosRequestConfig["params"];
+}
+
+export type AxiosBaseQueryType = BaseQueryFn<
+  AxiosBaseQueryArgs,
+  unknown,
+  AxiosBaseQueryError
+>;
+
 export const axiosBaseQuery =
-  (
-    { baseUrl }: { baseUrl?: string } = {} // optional parameter
-  ): BaseQueryFn<
-    {
-      url: string;
-      method: AxiosRequestConfig["method"];
-      data?: AxiosRequestConfig["data"];
-      params?: AxiosRequestConfig["params"];
-    },
-    unknown,
-    AxiosBaseQueryError
-  > =>
+  ({ baseUrl }: { baseUrl?: string } = {}): AxiosBaseQueryType =>
   async ({ url, method, data, params }) => {
     try {
       const result = await axiosInstance({
-        url: baseUrl ? `${baseUrl}${url}` : url, // prepend baseUrl if provided
+        url: baseUrl ? `${baseUrl}${url}` : url,
         method,
         data,
         params,
       });
 
-      // ✅ axiosInstance interceptor already returns response.data
       return { data: result };
     } catch (axiosError) {
       const err = axiosError as AxiosError;
