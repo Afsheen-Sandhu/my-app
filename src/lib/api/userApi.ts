@@ -9,7 +9,6 @@ export const userApi = apiSlice.injectEndpoints({
         method: 'get',
       }),
       transformResponse: (response: User) => {
-        console.log('Fetched user:', response);
         return response;
       },
       providesTags: ['User'],
