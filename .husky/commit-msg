@@ -1,4 +1,34 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx commitlint --edit
+# Run commitlint and capture the exit code
+npx --no -- commitlint --edit $1
+COMMITLINT_EXIT_CODE=$?
+
+# If commitlint failed, show custom error message
+if [ $COMMITLINT_EXIT_CODE -ne 0 ]; then
+  echo ""
+  echo "================================================================"
+  echo "COMMIT REJECTED: Invalid commit message format!"
+  echo "================================================================"
+  echo ""
+  echo "Required format: <type>: <subject>"
+  echo ""
+  echo "Valid types:"
+  echo "  - feat     : A new feature"
+  echo "  - fix      : A bug fix"
+  echo "  - docs     : Documentation changes"
+  echo "  - style    : Code style/formatting"
+  echo "  - refactor : Code refactoring"
+  echo "  - test     : Adding/updating tests"
+  echo "  - chore    : Maintenance tasks"
+  echo ""
+  echo "Good examples:"
+  echo "  git commit -m \"feat: add user login\""
+  echo "  git commit -m \"fix: resolve auth bug\""
+  echo "  git commit -m \"docs: update README\""
+  echo ""
+  echo "================================================================"
+  echo ""
+  exit 1
+fi

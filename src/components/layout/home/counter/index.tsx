@@ -1,12 +1,8 @@
-"use client";
+'use client';
 
-import { useAppDispatch, useAppSelector } from "@/store/storeHooks";
-import {
-  increment,
-  decrement,
-  addAmount,
-} from "@/store/slices/counter/counterSlice";
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from '@/lib/store/storeHooks';
+import { increment, decrement, addAmount } from '@/lib/store/slices/counter/counterSlice';
+import { useState } from 'react';
 
 export function Counter() {
   const dispatch = useAppDispatch();
@@ -16,14 +12,14 @@ export function Counter() {
   return (
     <div className="flex items-center space-x-2">
       <button
-        className="px-3 py-1 rounded bg-primary text-primary-foreground"
+        className="bg-primary text-primary-foreground rounded px-3 py-1"
         onClick={() => dispatch(decrement())}
       >
         -
       </button>
       <span className="px-3">{value}</span>
       <button
-        className="px-3 py-1 rounded bg-primary text-primary-foreground"
+        className="bg-primary text-primary-foreground rounded px-3 py-1"
         onClick={() => dispatch(increment())}
       >
         +
@@ -32,10 +28,10 @@ export function Counter() {
         type="number"
         value={amount}
         onChange={(e) => setAmount(Number(e.target.value))}
-        className="w-20 ml-2 p-1 border"
+        className="ml-2 w-20 border p-1"
       />
       <button
-        className="px-3 py-1 rounded bg-secondary text-secondary-foreground"
+        className="bg-secondary text-secondary-foreground rounded px-3 py-1"
         onClick={() => dispatch(addAmount(amount))}
       >
         Add

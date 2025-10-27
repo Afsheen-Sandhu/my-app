@@ -1,33 +1,34 @@
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
   timeout: 10000,
 });
 
-// Request interceptor
+// ✅ Request Interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
-// Response interceptor
+// ✅ Response Interceptor
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => response.data,
   (error: AxiosError) => {
     if (error.response) {
-      switch (error.response.status) {
+      const status = error.response.status;
+      switch (status) {
         case 401:
           // Handle unauthorized
           break;
@@ -43,7 +44,7 @@ axiosInstance.interceptors.response.use(
       }
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

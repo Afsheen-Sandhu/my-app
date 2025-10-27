@@ -1,14 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./slices/counter/counterSlice";
-import { apiSlice } from "@/services/api";
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './slices/counter/counterSlice';
+import { apiSlice } from '@/lib/api/api';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 // ✅ Typed hooks helpers

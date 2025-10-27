@@ -1,6 +1,8 @@
 {
-  "editor.tabCompletion": "on",
-  "diffEditor.codeLens": true,
-  "MutableAI.upsell": false,
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  }
 }

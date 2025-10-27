@@ -1,23 +1,27 @@
-import { apiSlice } from "./api";
-import { User, LoginRequest, LoginResponse } from "@/types/user";
+import { apiSlice } from '../api/api';
+import { User, LoginRequest, LoginResponse } from '@/types/user';
 
 export const userApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUser: builder.query<User, string>({
       query: (id) => ({
         url: `/users/${id}`,
-        method: "get",
+        method: 'get',
       }),
-      providesTags: ["User"],
+      transformResponse: (response: User) => {
+        console.log('Fetched user:', response);
+        return response;
+      },
+      providesTags: ['User'],
     }),
 
     loginUser: builder.mutation<LoginResponse, LoginRequest>({
       query: (body) => ({
-        url: "/auth/login",
-        method: "post",
+        url: '/auth/login',
+        method: 'post',
         data: body,
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ['User'],
     }),
   }),
 

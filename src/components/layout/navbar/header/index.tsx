@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { ThemeToggle } from "@/components/ui/theme/ThemeToggle";
-import Link from "next/link";
+import { ThemeToggle } from '@/components/ui/theme/ThemeToggle';
+import Link from 'next/link';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background">
+    <header className="bg-background sticky top-0 z-50 w-full border-b">
       <div className="container mx-auto flex h-14 items-center">
         <div className="mr-4 flex">
           <Link className="mr-6 flex items-center space-x-2" href="/">
@@ -14,7 +14,7 @@ export function Header() {
           <nav className="flex items-center space-x-6 text-sm font-medium">
             <Link
               href="/about"
-              className="text-foreground hover:text-muted-foreground transition-colors"
+              className="text-foreground hover:text-muted-foreground bg-black transition-colors"
             >
               About
             </Link>
