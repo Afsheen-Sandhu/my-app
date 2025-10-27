@@ -1,5 +1,5 @@
 // src/services/api/CustomBaseQuery.ts
-import axiosInstance from "@/lib/axios/AxiosInstance";
+import axiosInstance from "@/lib/axios/axiosInstance";
 import { BaseQueryFn } from "@reduxjs/toolkit/query";
 import { AxiosRequestConfig, AxiosError } from "axios";
 
