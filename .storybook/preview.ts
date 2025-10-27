@@ -1,6 +1,7 @@
+import { Preview } from "@storybook/nextjs";
 import "../src/styles/globals.css";
 
-const preview = {
+const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
