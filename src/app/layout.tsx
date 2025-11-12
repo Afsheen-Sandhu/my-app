@@ -4,6 +4,7 @@ import { ThemeProviderWrapper } from '@/providers/ThemeProviderWrapper';
 import { ReduxProvider } from '@/providers/ReduxProvider';
 import { Header } from '@/components/layout/navbar/header';
 import '@/styles/globals.css';
+import LightRays from '@/components/ui/light-rays/LightRays';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,11 +29,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-background min-h-screen font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
         <ThemeProviderWrapper>
           <ReduxProvider>
-            <div className="bg-background relative flex min-h-screen flex-col">
+            <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+              <LightRays
+                raysOrigin="top-center"
+                raysColor="#00ffff"
+                raysSpeed={1.5}
+                lightSpread={0.8}
+                rayLength={1.2}
+                followMouse={true}
+                mouseInfluence={0.1}
+                noiseAmount={0.1}
+                distortion={0.05}
+                className="custom-rays"
+              />
+            </div>
+            <div className="relative flex min-h-screen flex-col bg-background">
               <Header />
               <main className="flex-1">{children}</main>
             </div>
