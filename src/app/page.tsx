@@ -1,3 +1,9 @@
+import { Homepage } from '@/components/layout/home';
+
 export default function Home() {
-  return <div className="flex min-h-screen flex-col items-center justify-center">hello world</div>;
+  return (
+    <div className="h-screen">
+      <Homepage />
+    </div>
+  );
 }

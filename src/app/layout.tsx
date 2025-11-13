@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Schibsted_Grotesk, Martian_Mono } from 'next/font/google';
 import { ThemeProviderWrapper } from '@/providers/ThemeProviderWrapper';
 import { ReduxProvider } from '@/providers/ReduxProvider';
 import { Header } from '@/components/layout/navbar/header';
 import '@/styles/globals.css';
 import LightRays from '@/components/ui/light-rays/LightRays';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: '--font-schibsted-grotesk',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const martianMono = Martian_Mono({
+  variable: '--font-martian-mono',
   subsets: ['latin'],
 });
 
@@ -29,11 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background font-sans antialiased`}
+        className={`${schibstedGrotesk.variable} ${martianMono.variable} min-h-screen bg-background font-sans antialiased`}
       >
         <ThemeProviderWrapper>
           <ReduxProvider>
-            <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+            <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
               <LightRays
                 raysOrigin="top-center"
                 raysColor="#00ffff"
