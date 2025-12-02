@@ -7,10 +7,14 @@ interface Product {
     description: string;
     image: string;
     category: string;
+    rating: {
+        rate: number;
+        count: number;
+    };
 }
   export const productApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getProducts: builder.query<Product, void>({
+        getProducts: builder.query<Product[], void>({
             query: () => ({
                 url: "https://fakestoreapi.com/products",
                 method: "get",

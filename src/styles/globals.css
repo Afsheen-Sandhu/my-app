@@ -47,6 +47,36 @@
   --ring: #cbd5e1;
 }
 
+/* Theme Utility Classes with fallback colors */
+.text-primary {
+  color: #0f1729;
+  color: var(--primary, #0f1729) !important;
+}
+.text-base-foreground {
+  color: #171717;
+  color: var(--card-foreground, #171717) !important;
+}
+.text-muted-foreground {
+  color: #64748b;
+  color: var(--muted-foreground, #64748b) !important;
+}
+.bg-base {
+  background-color: #ffffff;
+  background-color: var(--card, #ffffff) !important;
+}
+.bg-primary {
+  background-color: #0f1729;
+  background-color: var(--primary, #0f1729) !important;
+}
+.bg-secondary {
+  background-color: #f1f5f9;
+  background-color: var(--secondary, #f1f5f9) !important;
+}
+.border-base {
+  border-color: #e2e8f0;
+  border-color: var(--border, #e2e8f0) !important;
+}
+
 * {
   border-color: var(--border);
 }
