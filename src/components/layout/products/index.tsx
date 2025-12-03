@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card } from "../../ui/card/index";
-import { ProductDetailsModal } from "./product/ProductDetailsModal";
 import { Product } from "@/types/index";
+import { ProductDetailsModal } from "@/components/ui/product";
 
 interface CardGridProps {
   products: Product[];

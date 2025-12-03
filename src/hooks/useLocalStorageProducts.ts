@@ -8,14 +8,13 @@ export const useLocalStorageProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load products from localStorage on mount
+ 
   useEffect(() => {
     try {
       const storedProducts = localStorage.getItem(STORAGE_KEY);
       if (storedProducts) {
         setProducts(JSON.parse(storedProducts));
       } else {
-        // Check if this is the first time initialization is needed
         const isInitialized = localStorage.getItem(INITIALIZED_KEY);
         if (!isInitialized) {
           localStorage.setItem(INITIALIZED_KEY, 'true');
@@ -27,7 +26,6 @@ export const useLocalStorageProducts = () => {
     setIsLoaded(true);
   }, []);
 
-  // Save products to localStorage whenever they change
   useEffect(() => {
     if (isLoaded) {
       try {
@@ -41,7 +39,7 @@ export const useLocalStorageProducts = () => {
   const addProduct = (productData: Omit<Product, 'id' | 'rating'>) => {
     const newProduct: Product = {
       ...productData,
-      id: Date.now(), // Use timestamp as unique ID
+      id: Date.now(),
       rating: {
         rate: 5,
         count: 0,

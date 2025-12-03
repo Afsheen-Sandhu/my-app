@@ -22,23 +22,25 @@ export function Header() {
             className="mr-3 sm:mr-6 flex items-center space-x-2 py-1"
             href="/"
           >
-            <span className="font-bold text-sm sm:text-base">My App</span>
+            <span className="font-bold text-sm sm:text-base text-primary">
+              My App
+            </span>
           </Link>
           <nav className="hidden sm:flex items-center space-x-4 md:space-x-6 text-xs md:text-sm font-medium">
             <Link
-              href="/about"
+              href="#"
               className="text-foreground hover:text-muted-foreground transition-colors"
             >
               About
             </Link>
             <Link
-              href="/blog"
+              href="#"
               className="text-foreground hover:text-muted-foreground transition-colors"
             >
               Blog
             </Link>
             <Link
-              href="/docs"
+              href="#"
               className="text-foreground hover:text-muted-foreground transition-colors"
             >
               Docs
@@ -52,7 +54,7 @@ export function Header() {
           >
             <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 text-base-content" />
             {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center font-semibold text-xs">
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white  rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center font-semibold text-xs">
                 {totalItems > 9 ? "9+" : totalItems}
               </span>
             )}

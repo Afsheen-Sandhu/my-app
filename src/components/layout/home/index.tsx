@@ -4,50 +4,20 @@ import { CardGrid } from "@/components/layout/products";
 import { useSelector } from "react-redux";
 import { selectSearchQuery } from "@/store/slices/search-slice";
 import { FiltersSidebar, PriceSort } from "@/components/ui/sidebar";
-import { ProductModal } from "@/components/layout/products/product";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useLocalStorageProducts } from "@/hooks/useLocalStorageProducts";
+import { ProductModal } from "@/components/ui/product";
 
 export const HomePage = () => {
   const { data, isLoading, error } = useGetProductsQuery();
   const searchQuery = useSelector(selectSearchQuery);
   const [priceSort, setPriceSort] = useState<PriceSort>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const {
-    products: localProducts,
-    addProduct,
-    updateProduct,
-    isLoaded,
-  } = useLocalStorageProducts();
-
-  React.useEffect(() => {
-    if (isLoaded && localProducts.length === 0) {
-      // Add sample products on first load if no products exist
-      const sampleProducts = [
-        {
-          title: "Sample Product 1",
-          price: 99.99,
-          description: "This is a sample product added on startup.",
-          image: "https://via.placeholder.com/300x300?text=Product+1",
-          category: "Sample",
-        },
-        {
-          title: "Sample Product 2",
-          price: 149.99,
-          description: "Another sample product to get you started.",
-          image: "https://via.placeholder.com/300x300?text=Product+2",
-          category: "Sample",
-        },
-      ];
-
-      sampleProducts.forEach((product) => {
-        addProduct(product);
-      });
-    }
-  }, [isLoaded, localProducts.length, addProduct]);
+  const { products: localProducts, addProduct } = useLocalStorageProducts();
 
   let products = [...(data || []), ...localProducts];
+
   if (searchQuery && searchQuery.trim().length > 0) {
     const words = searchQuery
       .trim()
@@ -57,6 +27,7 @@ export const HomePage = () => {
       words.every((word) => product.title.toLowerCase().includes(word))
     );
   }
+
   if (priceSort === "low-to-high") {
     products = [...products].sort((a, b) => a.price - b.price);
   } else if (priceSort === "high-to-low") {

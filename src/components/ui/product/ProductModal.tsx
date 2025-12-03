@@ -3,8 +3,9 @@
 import React from "react";
 import { Product } from "@/types/index";
 import { Modal } from "@/components/ui/modal";
-import { ProductDetailsModal } from "@/components/layout/products/product/ProductDetailsModal";
-import { ProductForm } from "@/components/layout/products/product/ProductForm";
+import { ProductDetailsModal } from "./ProductDetailsModal";
+import { ProductForm } from "./ProductForm";
+
 
 type ProductModalMode = "view" | "add";
 
