@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface SearchState {
   isOpen: boolean;
+  query: string;
 }
 
 const initialState: SearchState = {
   isOpen: false,
+  query: "",
 };
 
 const searchSlice = createSlice({
@@ -21,13 +23,18 @@ const searchSlice = createSlice({
     closeSearch: (state) => {
       state.isOpen = false;
     },
+    setQuery: (state, action) => {
+      state.query = action.payload;
+    },
   },
 });
 
-export const { toggleSearch, openSearch, closeSearch } = searchSlice.actions;
+export const { toggleSearch, openSearch, closeSearch, setQuery } = searchSlice.actions;
 
 export const selectIsSearchOpen = (state: { search: SearchState }) =>
   state.search.isOpen;
+
+export const selectSearchQuery = (state: { search: SearchState }) => state.search.query;
 
 export default searchSlice.reducer;
 

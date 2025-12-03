@@ -5,9 +5,14 @@ import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import { useSelector } from "react-redux";
 import { selectCartTotalItems } from "@/store/slices/cart-slice";
+import { useDispatch } from "react-redux";
+import { openSearch } from "@/store/slices/search-slice";
+import { Search } from "lucide-react";
+import { SearchOverlay } from "@/components/ui/search/SearchOverlay";
 
 export function Header() {
   const totalItems = useSelector(selectCartTotalItems);
+  const dispatch = useDispatch();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
@@ -46,9 +51,17 @@ export function Header() {
               </span>
             )}
           </Link>
+          <button
+            onClick={() => dispatch(openSearch())}
+            className="relative p-2 rounded-full hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+            aria-label="Search"
+          >
+            <Search className="h-6 w-6" />
+          </button>
           <ThemeToggle />
         </div>
       </div>
+      <SearchOverlay />
     </header>
   );
 }
