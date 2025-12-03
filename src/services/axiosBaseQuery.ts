@@ -29,7 +29,7 @@ export const axiosBaseQuery =
   async ({ url, method, data, params }) => {
     try {
       const result = await axiosInstance({
-        url: baseUrl ? `${baseUrl}${url}` : url,
+        url,
         method,
         data,
         params,
