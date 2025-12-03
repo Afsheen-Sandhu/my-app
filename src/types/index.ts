@@ -12,6 +12,20 @@ export interface User {
   email: string;
 }
 
+// Product type
+export interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+  category: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+}
+
 // Route params types
 export interface PageParams {
   slug: string;
