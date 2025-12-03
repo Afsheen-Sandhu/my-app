@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, ReactNode } from "react";
 import { X } from "lucide-react";
+import { Button } from "../button";
 
 interface ModalProps {
   isOpen: boolean;
@@ -72,32 +73,33 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-md">
       <div
         ref={containerRef}
-        className={`relative w-full ${maxWidthClasses[maxWidth]} max-h-[90vh] bg-white/90 rounded-2xl shadow-2xl overflow-hidden`}
+        className={`relative w-full ${maxWidthClasses[maxWidth]} max-h-[95vh] sm:max-h-[90vh] bg-base-100/95 backdrop-blur-sm text-base-content rounded-lg sm:rounded-2xl shadow-2xl flex flex-col border border-base-300/50`}
       >
         {title && (
-          <div className="px-6 py-4 border-b">
-            <h2 className="text-xl font-semibold">{title}</h2>
+          <div className="px-3 sm:px-6 py-3 sm:py-4 border-base-200 border-b flex-shrink-0">
+            <h2 className="text-lg sm:text-xl font-semibold text-white">
+              {title}
+            </h2>
           </div>
         )}
-        
+
         {showCloseButton && (
-          <button
+          <Button
             onClick={onClose}
-            className="absolute top-4 right-4 z-10 btn btn-circle btn-ghost btn-sm hover:bg-base-200"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 btn btn-circle btn-ghost btn-sm hover:bg-base-200"
             aria-label="Close modal"
           >
-            <X className="h-5 w-5" />
-          </button>
+            <X className="h-4 w-4 sm:h-5 sm:w-5" />
+          </Button>
         )}
 
-        <div className="p-4 sm:p-6 md:p-8 overflow-y-auto max-h-[90vh]">
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8 overflow-y-auto flex-1">
           {children}
         </div>
       </div>
     </div>
   );
 };
-

@@ -2,11 +2,11 @@
 
 import React from "react";
 import { Product } from "@/types/index";
-import { Modal } from "@/components/ui/modal/Modal";
-import { ProductDetailsModal } from "@/components/ui/ProductDetailsModal";
-import { ProductForm } from "@/components/ui/product/ProductForm";
+import { Modal } from "@/components/ui/modal";
+import { ProductDetailsModal } from "@/components/layout/products/product/ProductDetailsModal";
+import { ProductForm } from "@/components/layout/products/product/ProductForm";
 
-type ProductModalMode = "view" | "add" | "edit";
+type ProductModalMode = "view" | "add";
 
 interface ProductModalProps {
   product: Product | null;
@@ -35,16 +35,16 @@ export const ProductModal: React.FC<ProductModalProps> = ({
     );
   }
 
-  if ((mode === "add" || mode === "edit") && onSubmit) {
+  if (mode === "add" && onSubmit) {
     return (
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        title={mode === "add" ? "Add New Product" : "Edit Product"}
+        title="Add New Product"
         maxWidth="2xl"
       >
         <ProductForm
-          product={mode === "edit" ? product : null}
+          product={null}
           onSubmit={onSubmit}
           onCancel={onClose}
           isLoading={isLoading}
@@ -55,4 +55,3 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
   return null;
 };
-

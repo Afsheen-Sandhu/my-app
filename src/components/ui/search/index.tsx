@@ -1,6 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectIsSearchOpen, closeSearch, setQuery } from "@/store/slices/search-slice";
+import {
+  selectIsSearchOpen,
+  closeSearch,
+  setQuery,
+} from "@/store/slices/search-slice";
 import { useGetProductsQuery } from "@/store/slices/product-slice";
 import { Input } from "@/components/ui/input/Input";
 import { CardGrid } from "@/components/layout/products";
@@ -68,11 +72,11 @@ export const SearchOverlay = () => {
     <div className="fixed inset-0 z-50 bg-black/40 flex items-start justify-center pt-32">
       <div
         ref={containerRef}
-        className="bg-white rounded-xl shadow-lg max-w-2xl w-full p-6 min-h-[100px] relative"
+        className="bg-base-100 text-base-content rounded-xl shadow-lg max-w-2xl w-full p-6 min-h-[100px] relative border border-base-300"
       >
         <button
           onClick={handleClose}
-          className="absolute right-3 top-3 p-2 rounded-full hover:bg-muted focus:outline-none focus:ring"
+          className="absolute right-3 top-3 p-2 rounded-full hover:bg-base-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 text-base-content"
           aria-label="Close search"
         >
           <X className="h-5 w-5" />

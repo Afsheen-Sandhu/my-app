@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Product } from "@/types/index";
 import { Input } from "@/components/ui/input/Input";
+import { Button } from "@/components/ui/button";
 
 interface ProductFormProps {
   product?: Product | null;
@@ -57,10 +58,13 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6 w-full">
+      <div className="space-y-5">
         <div>
-          <label htmlFor="title" className="block text-sm font-medium mb-2">
+          <label
+            htmlFor="title"
+            className="block text-sm font-semibold mb-2 text-white"
+          >
             Product Title *
           </label>
           <Input
@@ -74,7 +78,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         </div>
 
         <div>
-          <label htmlFor="category" className="block text-sm font-medium mb-2">
+          <label
+            htmlFor="category"
+            className="block text-sm font-semibold mb-2 text-white"
+          >
             Category *
           </label>
           <Input
@@ -88,7 +95,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         </div>
 
         <div>
-          <label htmlFor="price" className="block text-sm font-medium mb-2">
+          <label
+            htmlFor="price"
+            className="block text-sm font-semibold mb-2 text-white"
+          >
             Price *
           </label>
           <Input
@@ -105,7 +115,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         </div>
 
         <div>
-          <label htmlFor="image" className="block text-sm font-medium mb-2">
+          <label
+            htmlFor="image"
+            className="block text-sm font-semibold mb-2 text-white"
+          >
             Image URL *
           </label>
           <Input
@@ -120,11 +133,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         </div>
 
         {formData.image && (
-          <div className="flex justify-center">
+          <div className="flex justify-center pt-2">
             <img
               src={formData.image}
               alt="Preview"
-              className="max-w-xs max-h-48 object-contain rounded-lg border"
+              className="max-w-xs max-h-48 object-contain rounded-lg border border-base-300"
               onError={(e) => {
                 e.currentTarget.style.display = "none";
               }}
@@ -135,7 +148,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         <div>
           <label
             htmlFor="description"
-            className="block text-sm font-medium mb-2"
+            className="block text-sm font-semibold mb-2 text-white"
           >
             Description *
           </label>
@@ -152,28 +165,27 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         </div>
       </div>
 
-      <div className="flex justify-end gap-4 pt-4">
-        <button
+      <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 pt-6 border-t border-base-200">
+        <Button
           type="button"
+          variant="outline"
+          size="md"
           onClick={onCancel}
-          className="px-6 py-2 border border-base-300 rounded-lg hover:bg-base-200 transition-colors"
           disabled={isLoading}
+          className="w-full sm:w-auto bg-secondary text-primary"
         >
           Cancel
-        </button>
-        <button
+        </Button>
+        <Button
           type="submit"
-          className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          variant="primary"
+          size="md"
           disabled={isLoading}
+          className="w-full sm:w-auto"
         >
-          {isLoading
-            ? "Saving..."
-            : product
-            ? "Update Product"
-            : "Add Product"}
-        </button>
+          {isLoading ? "Saving..." : product ? "Update Product" : "Add Product"}
+        </Button>
       </div>
     </form>
   );
 };
-

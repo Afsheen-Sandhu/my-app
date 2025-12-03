@@ -16,7 +16,7 @@ interface Product {
     endpoints: (builder) => ({
         getProducts: builder.query<Product[], void>({
             query: () => ({
-                url: "https://fakestoreapi.com/products",
+                url: "/products",
                 method: "get",
             }),
         }),

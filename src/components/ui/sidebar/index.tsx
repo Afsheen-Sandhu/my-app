@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown } from "@/components/ui/dropdown/Dropdown";
+import { Dropdown } from "@/components/ui/dropdown";
 
 export type PriceSort = "low-to-high" | "high-to-low" | null;
 
@@ -14,15 +14,19 @@ function getPriceSortLabel(sort: PriceSort) {
   return "Filter by Price";
 }
 
-export const FiltersSidebar: React.FC<FiltersSidebarProps> = ({ priceSort, onPriceSortChange }) => {
+export const FiltersSidebar: React.FC<FiltersSidebarProps> = ({
+  priceSort,
+  onPriceSortChange,
+}) => {
   return (
-    <aside className="bg-white rounded-xl shadow-md p-6 min-w-[220px] w-full max-w-xs flex flex-col gap-6">
+    <aside className="bg-base-100 text-base-content rounded-xl shadow-md p-5 w-full md:w-[260px] flex flex-col gap-4">
+      <h2 className="text-lg font-semibold">Filters</h2>
       <Dropdown label={getPriceSortLabel(priceSort)}>
         {({ close }) => (
-          <div className="flex flex-col">
+          <div className="flex flex-col py-1">
             <button
               type="button"
-              className={`text-left px-4 py-2 text-sm rounded transition-colors ${priceSort === "low-to-high" ? "bg-primary text-white" : "hover:bg-muted"}`}
+              className={`text-left px-4 py-2 text-sm rounded transition-colors ${priceSort === "low-to-high" ? "bg-primary text-primary-foreground" : "hover:bg-base-200"}`}
               onClick={() => {
                 onPriceSortChange("low-to-high");
                 close();
@@ -32,7 +36,7 @@ export const FiltersSidebar: React.FC<FiltersSidebarProps> = ({ priceSort, onPri
             </button>
             <button
               type="button"
-              className={`text-left px-4 py-2 text-sm rounded transition-colors ${priceSort === "high-to-low" ? "bg-primary text-white" : "hover:bg-muted"}`}
+              className={`text-left px-4 py-2 text-sm rounded transition-colors ${priceSort === "high-to-low" ? "bg-primary text-primary-foreground" : "hover:bg-base-200"}`}
               onClick={() => {
                 onPriceSortChange("high-to-low");
                 close();

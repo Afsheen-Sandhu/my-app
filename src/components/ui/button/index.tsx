@@ -1,9 +1,13 @@
+"use client";
+
 interface ButtonProps {
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  className?: string;
 }
 
 export function Button({
@@ -12,13 +16,17 @@ export function Button({
   children,
   onClick,
   disabled = false,
+  type = "button",
+  className = "",
 }: ButtonProps) {
-  const baseStyles = "rounded-md font-medium transition-colors";
+  const baseStyles =
+    "rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variants = {
-    primary: "bg-yellow-500 text-white hover:bg-yellow-800",
-    secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200",
-    outline: "border border-gray-300 hover:bg-gray-50",
+    primary: "bg-primary text-primary-foreground hover:opacity-90",
+    secondary: "bg-secondary text-secondary-foreground hover:opacity-90",
+    outline:
+      "border border-base-300 bg-base-100 text-base-content hover:bg-base-200",
   };
 
   const sizes = {
@@ -29,7 +37,8 @@ export function Button({
 
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]}`}
+      type={type}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       onClick={onClick}
       disabled={disabled}
     >

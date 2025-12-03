@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "../../ui/card/index";
-import { ProductDetailsModal } from "../../ui/ProductDetailsModal";
+import { ProductDetailsModal } from "./product/ProductDetailsModal";
 import { Product } from "@/types/index";
 
 interface CardGridProps {
@@ -23,7 +23,7 @@ export const CardGrid: React.FC<CardGridProps> = ({ products }) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-start">
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 items-start">
         {products.map((product) => (
           <Card
             key={product.id}
