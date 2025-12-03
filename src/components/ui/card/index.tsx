@@ -1,7 +1,9 @@
 import React from "react";
 import { ShoppingCart } from "lucide-react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/slices/cart-slice";
+import { selectCartItems } from "@/store/slices/cart-slice";
+import { toast } from "react-toastify";
 
 interface CardProps {
   image: string;
@@ -21,9 +23,15 @@ export const Card: React.FC<CardProps> = ({
   onClick,
 }) => {
   const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation(); // Prevent triggering onClick
+    const alreadyAdded = cartItems.some(item => item.id === id);
+    if (alreadyAdded) {
+      toast.error("Already added to cart");
+      return;
+    }
     dispatch(addToCart({ id, title, price, image }));
   };
 
@@ -34,8 +42,9 @@ export const Card: React.FC<CardProps> = ({
     >
       <button
         onClick={handleAddToCart}
-        className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white rounded-full p-2"
+        className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 bg-white/80 rounded-full p-2 shadow hover:scale-110 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary/80 group/cart-btn z-10"
         aria-label="Add to cart"
+        tabIndex={0}
       >
         <ShoppingCart className="h-6 w-6" />
       </button>
