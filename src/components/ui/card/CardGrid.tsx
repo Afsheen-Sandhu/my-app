@@ -19,7 +19,7 @@ interface CardGridProps {
 }
 
 export const CardGrid: React.FC<CardGridProps> = ({ products }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  <div className="flex flex-wrap gap-4 justify-center items-center">
     {products.map((product) => (
       <Card
         key={product.id}
