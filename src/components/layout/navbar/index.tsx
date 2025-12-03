@@ -8,7 +8,7 @@ import { selectCartTotalItems } from "@/store/slices/cart-slice";
 import { useDispatch } from "react-redux";
 import { openSearch } from "@/store/slices/search-slice";
 import { Search } from "lucide-react";
-import { SearchOverlay } from "@/components/ui/search/SearchOverlay";
+import { SearchOverlay } from "@/components/ui/search";
 
 export function Header() {
   const totalItems = useSelector(selectCartTotalItems);

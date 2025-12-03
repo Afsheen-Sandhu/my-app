@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProviderWrapper } from "@/providers/ThemeProviderWrapper";
 import { ReduxProvider } from "@/providers/ReduxProvider";
-import { Header } from "@/components/layout/navbar/header";
+import { Header } from "@/components/layout/navbar";
 import "@/styles/globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { HomePage } from "@/components/layout/home";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
           <ReduxProvider>
             <div className="relative flex min-h-screen flex-col bg-background">
               <Header />
+              
               <main className="flex-1">{children}</main>
               <ToastContainer position="top-center" autoClose={2000} />
             </div>

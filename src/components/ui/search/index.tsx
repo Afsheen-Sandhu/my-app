@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectIsSearchOpen, closeSearch, setQuery } from "@/store/slices/search-slice";
 import { useGetProductsQuery } from "@/store/slices/product-slice";
 import { Input } from "@/components/ui/input/Input";
-import { CardGrid } from "@/components/ui/card/CardGrid";
+import { CardGrid } from "@/components/layout/products";
 import { X } from "lucide-react";
 
 export const SearchOverlay = () => {

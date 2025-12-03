@@ -11,6 +11,7 @@ interface CardProps {
   description: string;
   price: number;
   id: number;
+  category?: string;
   onClick?: () => void;
 }
 
@@ -20,6 +21,7 @@ export const Card: React.FC<CardProps> = ({
   description,
   price,
   id,
+  category,
   onClick,
 }) => {
   const dispatch = useDispatch();
@@ -37,7 +39,7 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <div
-      className="bg-base rounded-xl shadow-md border border-base p-4 w-64 h-80 flex flex-col hover:shadow-lg cursor-pointer relative group"
+      className="bg-base rounded-xl shadow-md border border-base p-4 w-full h-[420px] flex flex-col hover:shadow-lg cursor-pointer relative group"
       onClick={onClick}
     >
       <button
@@ -59,8 +61,12 @@ export const Card: React.FC<CardProps> = ({
       <h3 className="text-md font-semibold mb-1 truncate w-full text-center text-base-foreground">
         {title}
       </h3>
-      {/* <p className="text-xs text-muted-foreground mb-2 line-clamp-2 text-center">{description}</p> */}
-      <div className="mt-auto flex justify-center">
+      {category && (
+        <p className="text-xs text-muted-foreground mb-2 text-center capitalize">
+          {category}
+        </p>
+      )}
+      <div className="mt-2 flex justify-center">
         <span className="text-lg font-bold text-primary">
           ${price.toFixed(2)}
         </span>
