@@ -24,7 +24,7 @@ export type AxiosBaseQueryType = BaseQueryFn<
   AxiosBaseQueryError
 >;
 
-export const axiosBaseQuery =
+export const AxiosBaseQuery =
   ({ baseUrl }: { baseUrl?: string } = {}): AxiosBaseQueryType =>
   async ({ url, method, data, params }) => {
     try {
