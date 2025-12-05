@@ -12,7 +12,7 @@ import { X } from "lucide-react";
 export const SearchOverlay = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector(selectIsSearchOpen);
-  const { data } = useGetProductsQuery();
+  const {} = useGetProductsQuery();
   const [queryValue, setQueryValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);

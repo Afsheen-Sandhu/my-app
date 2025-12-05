@@ -29,8 +29,8 @@ export const useLocalStorageProducts = () => {
     if (isLoaded) {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
-      } catch (error) {
-        console.error("Failed to save products to localStorage:", error);
+      } catch {
+        // Handle error silently or log to a service
       }
     }
   }, [products, isLoaded]);
