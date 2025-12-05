@@ -8,12 +8,15 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useLocalStorageProducts } from "@/hooks/useLocalStorageProducts";
 import { ProductModal } from "@/components/ui/product";
+import { Product } from "@/types/index";
 
 export const HomePage = () => {
   const { data } = useGetProductsQuery();
   const searchQuery = useSelector(selectSearchQuery);
   const [priceSort, setPriceSort] = useState<PriceSort>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const { products: localProducts, addProduct } = useLocalStorageProducts();
 
   let products = [...(data || []), ...localProducts];
@@ -54,7 +57,13 @@ export const HomePage = () => {
                 + Add New Product
               </Button>
             </div>
-            <CardGrid products={products} />
+            <CardGrid
+              products={products}
+              onProductClick={(product) => {
+                setSelectedProduct(product);
+                setIsViewModalOpen(true);
+              }}
+            />
           </div>
         </div>
       </div>
@@ -68,6 +77,12 @@ export const HomePage = () => {
           toast.success("Product added successfully!");
           setIsAddModalOpen(false);
         }}
+      />
+      <ProductModal
+        product={selectedProduct}
+        isOpen={isViewModalOpen}
+        onClose={() => setIsViewModalOpen(false)}
+        mode="view"
       />
     </div>
   );

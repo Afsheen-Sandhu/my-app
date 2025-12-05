@@ -18,6 +18,7 @@ export const Card: React.FC<CardProps> = ({ product, onClick }) => {
           src={product.image}
           alt={product.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className="object-contain p-2"
         />
       </div>
