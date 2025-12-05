@@ -10,7 +10,7 @@ import { useLocalStorageProducts } from "@/hooks/useLocalStorageProducts";
 import { ProductModal } from "@/components/ui/product";
 
 export const HomePage = () => {
-  const { data, isLoading, error } = useGetProductsQuery();
+  const { data } = useGetProductsQuery();
   const searchQuery = useSelector(selectSearchQuery);
   const [priceSort, setPriceSort] = useState<PriceSort>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);

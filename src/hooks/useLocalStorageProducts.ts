@@ -19,7 +19,7 @@ export const useLocalStorageProducts = () => {
           localStorage.setItem(INITIALIZED_KEY, "true");
         }
       }
-    } catch (error) {
+    } catch {
       // Handle error silently or log to a service
     }
     setIsLoaded(true);
