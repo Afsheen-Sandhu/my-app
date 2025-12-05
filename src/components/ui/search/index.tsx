@@ -7,7 +7,6 @@ import {
 } from "@/store/slices/search-slice";
 import { useGetProductsQuery } from "@/store/slices/product-slice";
 import { Input } from "@/components/ui/input/Input";
-import { CardGrid } from "@/components/layout/products";
 import { X } from "lucide-react";
 
 export const SearchOverlay = () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { Product } from "@/types/index";
 import { Input } from "@/components/ui/input/Input";
 import { Button } from "@/components/ui/button";
@@ -134,9 +135,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
         {formData.image && (
           <div className="flex justify-center pt-2">
-            <img
+            <Image
               src={formData.image}
               alt="Preview"
+              width={200}
+              height={192}
               className="max-w-xs max-h-48 object-contain rounded-lg border border-base-300"
               onError={(e) => {
                 e.currentTarget.style.display = "none";

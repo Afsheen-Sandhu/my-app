@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Product } from "@/types/index";
 import { Star, ShoppingCart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,10 +50,11 @@ export const ProductDetailsModal: React.FC<ProductDetailsModalProps> = ({
         {/* Product Image */}
         <div className="flex justify-center mb-4 sm:mb-6">
           <div className="relative w-full max-w-sm sm:max-w-md h-64 sm:h-80 rounded-xl overflow-hidden bg-base-200">
-            <img
+            <Image
               src={product.image}
               alt={product.title}
-              className="w-full h-full object-contain p-4"
+              fill
+              className="object-contain p-4"
             />
           </div>
         </div>
